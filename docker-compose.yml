@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  python_starter:
+    build: .
+    container_name: "genai-content-digitization"
+    volumes:
+      - ./:/app
+    # environment:
+    # Expose a port if you start a FastAPI app
+    ports:
+      - "8000:8000"
+    command: ["python", "-m", "python_starter"]

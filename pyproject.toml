@@ -1,0 +1,100 @@
+[project]
+name = "genai-content-digitization"
+version = "0.0.0"
+description = "GenAI Project for Content Digitization"
+license = "MIT"
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [
+    {name = "rjoydip", email = "joydipand@gmail.com"}
+]
+dependencies = [
+    "asyncio>=3.4.3",
+    "asyncpg>=0.30.0",
+    "azure-ai-inference>=1.0.0b9",
+    "openai>=1.75.0",
+    "pillow>=11.2.1",
+    "python-dotenv>=1.1.0",
+]
+[dependency-groups]
+dev = [
+    "pytest>=8.3.5",
+    "pytest-cov>=6.1.1",
+]
+lint = [
+    "ruff>=0.11.6",
+    "pyright>=1.1.399",
+]
+
+[build-system]
+requires = ["setuptools", "wheel", "pip"]
+build-backend = "setuptools.build_meta"
+
+# Pytest
+[tool.pytest.ini_options]
+ minversion = "6.0"
+ addopts = "-ra"
+ testpaths = [
+    "tests/*",
+    "integration",
+]
+python_files = "test_*.py"
+
+# Logging
+[tool.logging]
+version = 1
+
+[tool.logging.formatters.formatter]
+class = "logging.Formatter"
+format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+[tool.logging.handlers.fh]
+level = "DEBUG"
+class = "logging.FileHandler"
+formatter = "formatter"
+
+[tool.logging.handlers.ch]
+level = "ERROR"
+class = "logging.StreamHandler"
+formatter = "formatter"
+
+[tool.logging.spam_application]
+level = "DEBUG"
+handlers = ["fh", "ch"]
+
+[tool.logging.spam_application.auxiliary]
+propagate = false
+
+[tool.logging.spam_application.auxiliary.Auxiliary]
+propagate = false
+
+# UV
+[tool.uv]
+upgrade = false
+default-groups = "all"
+
+# Pyright
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+ignore = ["docs/", "tests/test_*.py"]
+
+# Ruff
+[tool.ruff]
+exclude = [
+    ".git",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".venv",
+    ".vscode",
+    "dist",
+    "site-packages",
+    "venv",
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+

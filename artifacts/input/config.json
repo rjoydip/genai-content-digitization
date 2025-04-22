@@ -1,0 +1,9 @@
+{
+    "data_range": {
+        "start_date": "2025-01-01",
+        "end_date": "2025-01-01"
+    },
+    "selections": ["Politics", "Economy"],
+    "topics": ["Elections", "Market"],
+    "keywords": ["vote", "stock"]
+}

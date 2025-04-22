@@ -1,0 +1,7 @@
+{
+    "name": "Python Starter DevContainer",
+    "dockerComposeFile": ["../docker-compose.yml"],
+    "service": "python_starter",
+    "workspaceFolder": "/app",
+    "remoteUser": "root"
+  }
