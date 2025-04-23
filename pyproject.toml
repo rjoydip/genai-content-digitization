@@ -1,7 +1,7 @@
 [project]
-name = "genai-content-digitization"
+name = "genai-extract-tiff-text-content"
 version = "0.0.0"
-description = "GenAI Project for Content Digitization"
+description = "GenAI project to extract content from TIFF using Azure Vision & rectify spelling using Azure OpenAI"
 license = "MIT"
 readme = "README.md"
 requires-python = ">=3.12"

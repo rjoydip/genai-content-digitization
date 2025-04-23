@@ -188,7 +188,7 @@ wheels = [
 ]
 
 [[package]]
-name = "genai-content-digitization"
+name = "genai-extract-tiff-text-content"
 version = "0.0.0"
 source = { editable = "." }
 dependencies = [

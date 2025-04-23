@@ -2,7 +2,7 @@ version: "3.8"
 services:
   python_starter:
     build: .
-    container_name: "genai-content-digitization"
+    container_name: "genai-extract-tiff-text-content"
     volumes:
       - ./:/app
     # environment:

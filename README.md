@@ -3,17 +3,18 @@
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 [![image](https://img.shields.io/pypi/v/uv.svg)](https://pypi.python.org/pypi/uv)
 [![Checked with pyright](https://microsoft.github.io/pyright/img/pyright_badge.svg)](https://microsoft.github.io/pyright/)
-[![CI](https://github.com/rjoydip/genai-content-digitization/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/rjoydip/genai-content-digitization/actions/workflows/ci.yml)
+[![CI](https://github.com/rjoydip/genai-extract-tiff-text-content/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/rjoydip/genai-extract-tiff-text-content/actions/workflows/ci.yml)
 
-GenAI Project for Content Digitization
+GenAI project to extract content from TIFF using Azure Vision & rectify spelling using Azure OpenAI
 
 ## 🚀 Features
 
 - UV package manager for dependency management
 - Docker support
 - Ruff for code formatting and linting
-- Pytest for testing
-- Logging configuration
+- PostgresSQL using [NeonDB](https://neon.tech/docs/guides/python)
+- [Azure AI Vision Service](https://azure.microsoft.com/en-us/products/ai-services/ai-vision)
+- [Azure OpenAI Service](https://azure.microsoft.com/en-us/products/ai-services/openai-service)
 
 ## 📋 Prerequisites
 
