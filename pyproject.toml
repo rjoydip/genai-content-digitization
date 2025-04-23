@@ -11,9 +11,8 @@ authors = [
 dependencies = [
     "asyncio>=3.4.3",
     "asyncpg>=0.30.0",
-    "azure-ai-inference>=1.0.0b9",
+    "azure-ai-vision-imageanalysis>=1.0.0",
     "openai>=1.75.0",
-    "pillow>=11.2.1",
     "python-dotenv>=1.1.0",
 ]
 [dependency-groups]
