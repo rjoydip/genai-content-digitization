@@ -22,7 +22,7 @@ GenAI project to extract content from TIFF using Azure Vision & rectify spelling
 - Docker Desktop
 - UV package manager
 
-## Code flow 
+## Code flow
 
 ```mermaid
 flowchart TD
