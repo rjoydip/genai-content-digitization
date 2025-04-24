@@ -25,7 +25,7 @@ async def fetch_article_ids(
 
     results = await conn.fetch(
         """
-        SELECT id FROM news
+        SELECT article_id FROM news
         WHERE publication_date BETWEEN $1 AND $2
             AND selection ILIKE ANY($3)
             AND "topic " ILIKE ANY($4)
@@ -42,7 +42,7 @@ async def fetch_article_ids(
         keyword_patterns,
     )
 
-    return [record["id"] for record in results]
+    return [record["article_id"] for record in results]
 
 
 async def process_image(
@@ -62,7 +62,7 @@ async def process_image(
         return {"article_id": article_id, "error": "File not found"}
 
     # Analyze with Vision API
-    vision_response = vision_client._analyze_from_image_data(
+    vision_response = vision_client.analyze(
         image_data=tiff_image_data,
         visual_features=[VisualFeatures.CAPTION, VisualFeatures.READ],
         gender_neutral_caption=True,
@@ -182,7 +182,7 @@ async def main() -> None:
         )
 
         # Fetch article IDs from database
-        async with asyncpg.create_pool(required_env_vars["DATABASE_URL"]) as pool:
+        async with await asyncpg.create_pool(required_env_vars["DATABASE_URL"]) as pool:
             async with pool.acquire() as conn:
                 article_ids = await fetch_article_ids(
                     conn, start_date, end_date, sections, topics, keywords
