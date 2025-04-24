@@ -22,6 +22,62 @@ GenAI project to extract content from TIFF using Azure Vision & rectify spelling
 - Docker Desktop
 - UV package manager
 
+## Code flow 
+
+```mermaid
+flowchart TD
+    subgraph initialization[Initialization]
+        A[Load environment variables] --> B[Set up paths]
+        B --> C[Validate required environment variables]
+        C --> D[Load configuration from JSON]
+        D --> E[Convert date strings to datetime objects]
+    end
+
+    subgraph client_setup[Client Setup]
+        F[Initialize Vision API Client] 
+        G[Initialize Azure OpenAI Client]
+    end
+
+    subgraph database_processing[Database Processing]
+        H[Create connection pool] --> I[Acquire database connection]
+        I --> J[Fetch article IDs based on criteria]
+        J --> K{Any articles found?}
+    end
+
+    subgraph parallel_processing[Parallel Processing]
+        L[Create processing tasks for each article]
+        M[Run tasks concurrently with asyncio.gather]
+    end
+
+    subgraph process_image_function[Process Image Function]
+        N[Read TIFF image] --> O{File exists?}
+        O -->|No| P[Return error]
+        O -->|Yes| Q[Analyze with Vision API]
+        Q --> R[Extract caption]
+        Q --> S[Extract OCR text content]
+        S --> T[Process text with OpenAI]
+        T --> U[Return structured results]
+    end
+
+    subgraph results_handling[Results Handling]
+        V[Process each result]
+        V --> W{Is result an exception?}
+        W -->|Yes| X[Log error]
+        W -->|No| Y{Has error field?}
+        Y -->|Yes| Z[Log file not found]
+        Y -->|No| AA[Display article info]
+    end
+
+    initialization --> client_setup
+    client_setup --> database_processing
+    K -->|No| END[Exit]
+    K -->|Yes| parallel_processing
+    parallel_processing --> results_handling
+
+    L --> process_image_function
+    M --> V
+```
+
 ## 🛠 Installation
 
 1. Clone the repository:
